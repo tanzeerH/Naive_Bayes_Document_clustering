@@ -1,0 +1,8 @@
+Smoothng factor: 0.2 correct: 2283  total: 2572 precentage : 88.76360808709177%
+Smoothng factor: 2.0 correct: 2119  total: 2572 precentage : 82.38724727838257%
+Smoothng factor: 2.0 correct: 2119  total: 2572 precentage : 82.38724727838257%
+Smoothng factor: 1.5 correct: 2142  total: 2572 precentage : 83.2814930015552%
+Smoothng factor: 0.005 correct: 2302  total: 2572 precentage : 89.50233281493001%
+Smoothng factor: 0.05 correct: 2324  total: 2572 precentage : 90.35769828926905%
+Smoothng factor: 0.5 correct: 2234  total: 2572 precentage : 86.85847589424573%
+Smoothng factor: 1.0 correct: 2175  total: 2572 precentage : 84.56454121306376%

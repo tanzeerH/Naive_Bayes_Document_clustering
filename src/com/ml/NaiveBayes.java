@@ -1,5 +1,11 @@
 package com.ml;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -10,7 +16,7 @@ public class NaiveBayes {
 	private HashMap<String, Double> priorHashMap ;
 	private ArrayList<HashMap<String,Integer>> testList;
 	private HashMap<String, Integer> hashTopicCount;
-	
+	private ArrayList<String> lines = new ArrayList<String>();
 	ArrayList<String> classList;
 
 	public NaiveBayes() {
@@ -63,8 +69,63 @@ public class NaiveBayes {
 			//System.out.println();
 			
 		}
-		System.out.println("correct: "+ correct+"  total: "+testList.size()+" precentage : "+((double)correct/(double)testList.size()));
+		lines.clear();
+		String str="Smoothng factor: "+NaiveBayesTrain.SMOOTTHING_FACTOR+" correct: "+ correct+"  total: "+testList.size()+" precentage : "+((double)correct/(double)testList.size()*100 + "%");
+		lines.add(str);
+		System.out.println(str);
+		
+		writeInFile();
 		
 		
+	}
+	private void writeInFile() {
+
+		BufferedReader br = null;
+		try {
+
+			String sCurrentLine;
+
+			br = new BufferedReader(new FileReader("output.txt"));
+			while ((sCurrentLine = br.readLine()) != null) {
+				
+				lines.add(sCurrentLine);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (br != null)
+					br.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+		
+		try {
+
+			File file = new File("output.txt");
+
+			// if file doesnt exists, then create it
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+
+			FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			// writing results
+			for(int i=0;i<lines.size();i++)
+			{
+				String str = lines.get(i);
+				
+			//System.out.println(str);
+			bw.write(str + "\n");
+			}
+
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
